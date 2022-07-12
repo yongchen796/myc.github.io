@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="网站JQ.css"/>
+    <!-- <script src="jquery-3.6.0.js"></script> -->
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script> 
+    <title>Document</title>
+</head>
+<body>
+    <div id="nav">
+        <ul id="first">
+            <li>主页</li>
+            <li>店铺
+                <ul>
+                    <li>我的关注</li>
+                    <li>发现</li>
+                    <li>看过</li>
+                    <li>分类</li>
+                </ul>
+            </li>
+            <li>消息
+                <ul>
+                    <li>服务通知</li>
+                    <li>交易物流</li>
+                    <li>消息号内容</li>
+                    <li>客服</li>
+                </ul>
+            </li>
+            <li>推荐
+                <ul>
+                    <li>签到</li>
+                    <li>活动优惠</li>
+                    <li>今日爆款</li>
+                    <li>限时抢</li>
+                    <li>上新</li>
+                </ul>
+            </li>
+            <li>我的
+                <ul>
+                    <li>账号</li>
+                    <li>设置</li>
+                    <li>收货地址</li>
+                    <li>足迹</li>
+                    <li>售后</li>
+                    <li>评价</li>
+                    <li>会员中心</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="banner">
+        <ul id="pic">
+            <li class="active"> <img src="../图片/img01.jpg" alt="">  </li>
+            <li><img src="../图片/img02.jpg" alt=""></li>
+            <li><img src="../图片/img03.jpg" alt=""></li>
+            <li><img src="../图片/img04.jpg" alt=""></li>
+            <li><img src="../图片/img05.jpg" alt=""></li>
+            <li><img src="../图片/img06.jpg" alt=""></li>
+        </ul>
+        <span id="left">&lt;</span>
+        <!--   <   -->
+        <span id="right">&gt;</span>
+        <!--   >   -->
+        <ul id="dot">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div> 
+    <div id="sort">
+        <ul>
+            <li>
+                <img src="../图片/商品1.png" alt="">
+                <div class="one"><p>图书</p></div>
+				<div class="two"><p>精彩不容错过</p></div>
+				<div class="three"><p>良品惊爆来袭</p></div>
+            </li>
+            <li>
+                <img src="../图片/商品2.jpg" alt="">
+                <div class="one"><p>女装</p></div>
+				<div class="two"><p>服装焕新季</p></div>
+				<div class="three"><p>每满300减30</p></div>
+            </li>
+            <li>
+                <img src="../图片/商品3.jpg" alt="">
+                <div class="one"><p>男装</p></div>
+				<div class="two"><p>品质男装</p></div>
+				<div class="three"><p>每满300减30</p></div>
+            </li>
+            <li>
+                <img src="../图片/商品4.webp" alt="">
+                <div class="one"><p>电脑</p></div>
+				<div class="two"><p>开工宝典 采购指南</p></div>
+				<div class="three"><p>职场清洁 低至5折</p></div>
+            </li>
+            <li>
+                <img src="../图片/商品5.webp" alt="">
+                <div class="one"><p>品牌</p></div>
+				<div class="two"><p>国美乐购节 限量5折起</p></div>
+				<div class="three"><p>爆款每满300减40</p></div>
+            </li>
+            <li>
+                <img src="../图片/商品6.webp" alt="">
+                <div class="one"><p>生鲜</p></div>
+				<div class="two"><p>时令生鲜</p></div>
+				<div class="three"><p>爆款限时低价</p></div>
+            </li>
+            <li>
+                <img src="../图片/商品7.webp" alt="">
+                <div class="one"><p>智能家居</p></div>
+				<div class="two"><p>美的智能家</p></div>
+				<div class="three"><p>多件购买低至95折</p></div>
+            </li>
+            <li>
+                <img src="../图片/商品8.webp" alt="">
+                <div class="one"><p>电器</p></div>
+				<div class="two"><p>惠动全城</p></div>
+				<div class="three"><p>新国标插排</p></div>
+            </li>
+            <li>
+                <img src="../图片/商品9.webp" alt="">
+                <div class="one"><p>电视</p></div>
+				<div class="two"><p>电视影音</p></div>
+				<div class="three"><p>定金20元高抵1220元</p></div>
+            </li>
+        </ul>
+    </div> 
+    <div id="fixed">
+        <ul>
+            <li>关闭</li>
+            <li>我的动态</li>
+            <li>切换账号</li>
+            <li>退出登录</li>
+            <li>返回顶部</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $("#first").children("li").hover(function(){
+                $(this).find("ul").show()
+            },function(){
+                $(this).find("ul").hide()
+            })
+
+            function play(){
+                num=num%$('#pic li').length;
+                $('#pic li').eq(num).stop().fadeIn(500).siblings().fadeOut(1000);
+                $('#dot li').eq(num).addClass('active').siblings().removeClass('active');
+            }
+            var timer=null;
+            var num=0;
+            function change(){
+                timer=setInterval(function(){
+                    num++; 
+                    play();
+                },2000);
+            }
+            
+            $('#banner').hover(function(){
+                clearInterval(timer)
+            },function(){
+                change();
+            })
+
+            $('#left').click(function(){
+                num--;
+                play();
+            })
+            $('#right').click(function () {
+                num++;
+                play();
+            })
+
+            //点击原点切图
+            $('#dot li').click(function(){
+                num=$(this).index();
+                $('#pic li').eq(num).stop().fadeIn(500).siblings().fadeOut(1000);
+                $('#dot li').eq(num).addClass('active').siblings().removeClass('active');
+            })
+
+            //悬浮菜单
+            $('#fixed ul li').eq(0).click(function(){
+                $(this).parent().hide(500);
+            })
+            $('#fixed ul li').eq(4).click(function(){
+                // $(document).scrollTop(0);
+                $('body,html').animate({
+                    scrollTop:0
+                })
+            })
+        });  
+    </script>
+</body>
+</html>
